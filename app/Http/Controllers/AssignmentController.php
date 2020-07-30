@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 
-
 class AssignmentController extends Controller {
 
     public function home()
@@ -13,19 +12,18 @@ class AssignmentController extends Controller {
 
     public function calculateScore()
     {
-
+        var_dump(getcwd());
+        var_dump(file("/app/ScoreCalculator/Uploads/Assignment.xlsx"));
     }
 
     public function fetchScore()
     {
-        $targetDirectory = "../ScoreCalculator/Uploads/";
+        $targetDirectory = "../../ScoreCalculator/Uploads/";
         $targetFile = $targetDirectory . basename($_FILES["fileToUpload"]["name"]);
         $mayUpload = true;
         $fileType = strtolower(pathinfo($targetFile,PATHINFO_EXTENSION));
 
-        var_dump($fileType);
-        var_dump($targetFile);
-
+//        dd($_FILES["fileToUpload"]);
 
         // Check if file already exists
         if (file_exists($targetFile)) {
