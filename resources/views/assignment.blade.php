@@ -38,6 +38,30 @@
             text-transform: uppercase;
         }
 
+        .input-wrapper {
+            margin:auto;
+            flex-direction: column;
+            padding: 25px 50px;
+            display: flex;
+            width: 50%;
+            border: 1px solid #ededed;
+            border-radius: 5px;
+        }
+
+        .input-text {
+            margin-bottom: 15px;
+            width: 100%;
+        }
+
+        .output-wrapper {
+            width: 100%;
+            padding: 20px;
+        }
+
+        .output {
+
+        }
+
         .m-b-md {
             margin-bottom: 30px;
         }
@@ -49,5 +73,19 @@
                 Assignment
             </div>
         </div>
+    <div class="input-wrapper">
+        <div class="input-text">
+        Voer hier het Excel document in:
+        </div>
+        <form action="/fetch-score" method="post" enctype="multipart/form-data">
+            @csrf
+            <input type="file" name="fileToUpload" id="fileToUpload">
+            <input type="submit" value="Upload" name="submit">
+        </form>
+        <div class="output-wrapper">
+            <div class="output">
+            </div>
+        </div>
+    </div>
     </body>
 </html>
