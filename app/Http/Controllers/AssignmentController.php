@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 
-use Illuminate\Support\Facades\Request;
-
 
 class AssignmentController extends Controller {
 
@@ -20,29 +18,33 @@ class AssignmentController extends Controller {
 
     public function fetchScore()
     {
-        $target_dir = "../ScoreCalculator/Uploads";
-        $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
-        $uploadOk = true;
-        $fileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+        $targetDirectory = "../ScoreCalculator/Uploads/";
+        $targetFile = $targetDirectory . basename($_FILES["fileToUpload"]["name"]);
+        $mayUpload = true;
+        $fileType = strtolower(pathinfo($targetFile,PATHINFO_EXTENSION));
+
+        var_dump($fileType);
+        var_dump($targetFile);
+
 
         // Check if file already exists
-        if (file_exists($target_file)) {
+        if (file_exists($targetFile)) {
             echo "Sorry, file already exists.";
-            $uploadOk = false;
+            $mayUpload = false;
         }
 
-        // Allow certain file formats
-        if($fileType != "xlsx"  ) {
+        // Only allow .xlsx file types
+        if ($fileType != "xlsx"  ) {
             echo "Sorry only .xlsx files are allowed";
-            $uploadOk = false;
+            $mayUpload = false;
         }
 
-        // Check if $uploadOk is set to 0 by an error
-        if ($uploadOk == false) {
+        // Check if $mayUpload is set to false by an error
+        if ($mayUpload == false) {
             echo "Sorry, your file was not uploaded.";
-            // if everything is ok, try to upload file
+            // else - upload the file
         } else {
-            if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+            if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $targetFile)) {
                 echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
             } else {
                 echo "Sorry, there was an error uploading your file.";
