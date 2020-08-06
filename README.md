@@ -31,3 +31,5 @@ So in my opinion we need at least 2 entities (maybe 3 because of adding Score):
 the 2 calculations?
 3. **Scores** maybe the calculation scores should be defined here
 
+See github develop branch for latest impression on the data-model.
+
