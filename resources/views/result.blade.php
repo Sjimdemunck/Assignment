@@ -67,25 +67,20 @@
         }
     </style>
 </head>
-    <body>
-        <div class="content">
-            <div class="title m-b-md">
-                Assignment
-            </div>
-        </div>
-    <div class="input-wrapper">
-        <div class="input-text">
-        Voer hier het Excel document in:
-        </div>
-        <form action="/import" method="post" enctype="multipart/form-data">
-            @csrf
-            <input type="file" name="file" id="file">
-            <input type="submit" value="Upload" name="submit">
-        </form>
-        <div class="output-wrapper">
-            <div class="output">
-            </div>
+<body>
+<div class="content">
+    <div class="title m-b-md">
+        Assignment
+    </div>
+</div>
+<div class="input-wrapper">
+    <div class="input-text">
+        De score is: {{ $results }}
+    </div>
+    <div class="output-wrapper">
+        <div class="output">
         </div>
     </div>
-    </body>
+</div>
+</body>
 </html>

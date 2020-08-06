@@ -14,5 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'AssignmentController@home');
+Route::get('/test', 'AssignmentController@calculateScore');
+route::get('/reset', 'ScoreController@clear');
 
-Route::post('/fetch-score', 'AssignmentController@fetchScore');
+Route::post('/import', 'ScoreController@import');
