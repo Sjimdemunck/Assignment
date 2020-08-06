@@ -2,8 +2,9 @@
 
 namespace app\ScoreCalculator\Services;
 
-require_once __DIR__ . '../../vendor/autoload.php';
+require_once __DIR__ . '../../../vendor/autoload.php';
 
+use Illuminate\Support\Facades\DB;
 use ScoreCalculator\Services\FetchScore;
 
 class CalculateScore
@@ -23,8 +24,12 @@ class CalculateScore
 
     public function printScore(int $score)
     {
-        return $score;
+
     }
 
 
+    public function getScore()
+    {
+
+    }
 }
