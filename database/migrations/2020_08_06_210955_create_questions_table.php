@@ -14,9 +14,10 @@ class CreateQuestionsTable extends Migration
     public function up()
     {
         Schema::create('questions', function (Blueprint $table) {
+            $table->id();
             $table->string('score_question');
             $table->integer('max_score');
-            $table->timestamps();
+            $table->softDeletes();
         });
     }
 

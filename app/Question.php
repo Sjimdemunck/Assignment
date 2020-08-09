@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Question extends Model
 {
+    public $timestamps = false;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -14,5 +16,10 @@ class Question extends Model
     protected $fillable = [
         'score_question',
         'max_score'
-        ];
+    ];
+
+    public function students()
+    {
+        return $this->belongsToMany(Student::class, 'scores')->withPivot('score');
+    }
 }

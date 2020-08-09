@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Student extends Model
 {
+    public $timestamps = false;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -17,4 +19,14 @@ class Student extends Model
         'r-value',
         'p-value'
     ];
+
+    public function questions()
+    {
+        return $this->belongsToMany(Question::class, 'scores')->withPivot('score');;
+    }
+
+    public function scores()
+    {
+        return $this->hasMany(Score::class);
+    }
 }

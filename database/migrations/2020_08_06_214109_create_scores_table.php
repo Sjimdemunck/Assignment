@@ -14,8 +14,13 @@ class CreateScoresTable extends Migration
     public function up()
     {
         Schema::create('scores', function (Blueprint $table) {
-            $table->string('student')->default('');
-            $table->timestamps();
+            $table->id();
+            $table->bigInteger('question_id')->unsigned();
+            $table->bigInteger('student_id')->unsigned();
+            $table->float('score')->unsigned();
+
+            $table->foreign('question_id')->references('id')->on('questions');
+            $table->foreign('student_id')->references('id')->on('students');
         });
     }
 
